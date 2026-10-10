@@ -1,10 +1,6 @@
 services:
   - type: web
-    name: sparkclean-home-services-site
-    runtime: static
-    buildCommand: npm install --no-audit --no-fund && npm run build
-    staticPublishPath: ./dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    name: sparkclean-home-services
+    runtime: node
+    buildCommand: pnpm install --frozen-lockfile --prod=false && pnpm run build
+    startCommand: pnpm exec vite preview --host 0.0.0.0 --port $PORT

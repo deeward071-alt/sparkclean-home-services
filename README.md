@@ -13,13 +13,13 @@ Create a production build with `pnpm build`, then preview it with `pnpm preview`
 
 ## Deploy on Render
 
-For a Render static site, set the Build Command to:
+For the Render Node web service, set the Build Command to:
 
 ```sh
-npm install --no-audit --no-fund && npm run build
+pnpm install --frozen-lockfile --prod=false && pnpm run build
 ```
 
-Set the Publish Directory to `dist`. The root `render.yaml` contains these settings. The build also creates page entry files so direct visits to `/services`, `/about`, `/contact`, and `/privacy` work on static hosting. If your Render service is not managed by a Blueprint, update its Build Command and Publish Directory in the Render dashboard.
+Set the Start Command to `pnpm exec vite preview --host 0.0.0.0 --port $PORT`. The root `render.yaml` contains these settings. The build also creates page entry files so direct visits to `/services`, `/about`, `/contact`, and `/privacy` work. If your Render service is not managed by a Blueprint, update its Build and Start Commands in the Render dashboard.
 
 ## Before launch
 
