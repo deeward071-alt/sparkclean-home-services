@@ -13,13 +13,13 @@ Create a production build with `pnpm build`, then preview it with `pnpm preview`
 
 ## Deploy on Render
 
-This project uses pnpm and includes `pnpm-lock.yaml`. For an existing Render static site, set the Build Command to:
+For a Render static site, set the Build Command to:
 
 ```sh
-npm install --global pnpm@11.25.0 && pnpm install --frozen-lockfile && pnpm run build
+npm install --no-audit --no-fund && npm run build
 ```
 
-Set the Publish Directory to `dist`. The root `render.yaml` contains the same build and publish settings, plus a rewrite for direct visits to the app's pages. If your Render service is not managed by a Blueprint, update its Build Command and Publish Directory in the Render dashboard.
+Set the Publish Directory to `dist`. The root `render.yaml` contains these settings. The build also creates page entry files so direct visits to `/services`, `/about`, `/contact`, and `/privacy` work on static hosting. If your Render service is not managed by a Blueprint, update its Build Command and Publish Directory in the Render dashboard.
 
 ## Before launch
 
@@ -29,4 +29,3 @@ Set the Publish Directory to `dist`. The root `render.yaml` contains the same bu
 - Update the starter privacy policy to fit the real business and jurisdiction.
 - The site uses Pexels-hosted photos and Google Fonts. Verify usage rights and consider hosting optimized images locally before launch.
 - Configure hosting rewrites so `/services`, `/about`, `/contact`, and `/privacy` serve `index.html` for direct visits.
-
